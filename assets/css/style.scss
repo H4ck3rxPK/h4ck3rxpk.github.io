@@ -1,0 +1,247 @@
+---
+---
+
+/* 引入 Chirpy 主題的基礎樣式 */
+@import "{{ site.theme }}";
+
+/* 賽博龐克字體 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+/* 僅在深色模式套用效果 */
+[data-mode="dark"] {
+  
+  /* 顏色變數覆寫 */
+  --body-bg: #0a0a0a;
+  --main-bg: rgba(0, 0, 0, 0.95);
+  --card-bg: rgba(15, 15, 15, 0.9);
+  --text-color: #00ff00;
+  --heading-color: #00ffff;
+  --link-color: #00ff00;
+  --link-hover-color: #00ffff;
+  
+  /* 矩陣雨背景 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(0deg, 
+        transparent 0%, 
+        rgba(0, 255, 0, 0.02) 50%, 
+        transparent 100%);
+    background-size: 100% 4px;
+    animation: matrix-rain 10s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* 掃描線效果 */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+      );
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* 標題霓虹效果 */
+  h1, h2, h3, 
+  .site-title a,
+  .post-title a {
+    font-family: 'Orbitron', monospace;
+    color: #00ffff !important;
+    text-shadow: 
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 30px #00ffff,
+      0 0 40px #0088ff;
+    animation: neon-flicker 2s infinite alternate;
+  }
+  
+  /* 連結發光 */
+  a {
+    color: #00ff00;
+    transition: all 0.3s ease;
+  }
+  
+  a:hover {
+    color: #00ffff;
+    text-shadow: 
+      0 0 10px #00ffff,
+      0 0 20px #00ffff;
+  }
+  
+  /* 卡片邊框 */
+  .card,
+  .post-preview {
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover,
+  .post-preview:hover {
+    border-color: #00ffff;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.5),
+      inset 0 0 20px rgba(0, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* 程式碼區塊 */
+  pre {
+    background: #000;
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+  }
+  
+  code {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+  }
+  
+  /* 標籤樣式 */
+  .post-tag,
+  .tag {
+    background: transparent;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    transition: all 0.3s ease;
+  }
+  
+  .post-tag:hover,
+  .tag:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* 側邊欄 */
+  #sidebar {
+    background: rgba(0, 0, 0, 0.95);
+    border-right: 1px solid rgba(0, 255, 0, 0.2);
+  }
+  
+  /* 按鈕 */
+  .btn {
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    background: transparent;
+    font-family: 'Orbitron', monospace;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: #00ffff;
+    color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* 滾動條 */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #000;
+    border: 1px solid #00ff00;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border: 1px solid #000;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ffff;
+  }
+}
+
+/* 動畫效果 */
+@keyframes matrix-rain {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #00ffff,
+      0 0 10px #00ffff,
+      0 0 15px #00ffff,
+      0 0 20px #0088ff;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 30px #00ffff,
+      0 0 40px #0088ff;
+  }
+}
+
+/* 打字機效果 (用於標題) */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Archives 頁面特別效果 */
+.archives {
+  .year {
+    color: #00ffff;
+    font-family: 'Orbitron', monospace;
+    font-size: 2em;
+    text-shadow: 0 0 20px #00ffff;
+  }
+  
+  .date {
+    color: #00ff00;
+    font-family: monospace;
+  }
+  
+  .title a {
+    position: relative;
+    &::before {
+      content: '> ';
+      color: #00ff00;
+      animation: blink 1s infinite;
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  [data-mode="dark"] {
+    h1, h2, h3 {
+      font-size: 1.2em;
+    }
+    
+    body::before,
+    body::after {
+      display: none; /* 手機版關閉背景效果 */
+    }
+  }
+}
