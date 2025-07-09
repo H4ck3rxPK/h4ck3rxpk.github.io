@@ -15,8 +15,7 @@ script_includes:
 {% endcomment %}
 {% if page.date > site.time %}
   <div class="locked">
-    🔒 文章暂未公开<br>
-    预计于 {{ page.date | date: "%Y/%m/%d %H:%M" }} 发布
+    謹守 HTB Active 機器不能公開原則, 待時間到後會解除
   </div>
 {% else %}
   {{ content }}
